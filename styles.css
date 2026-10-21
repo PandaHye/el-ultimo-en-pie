@@ -981,20 +981,61 @@ body.is-admin .slot-row:hover {
 }
 
 footer {
-  text-align: center;
-  padding: 24px;
+  padding: 22px 24px;
   border-top: 1px solid var(--border-subtle);
+  background: rgba(6, 7, 11, 0.75);
   color: var(--text-muted);
   font-size: 13px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-@media (max-width: 780px) {
-  .playoffs-grid {
-    grid-template-columns: 1fr;
-  }
-  .header-inner {
+.footer-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-copy strong {
+  color: #fff;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.social-pill:hover {
+  color: #fff;
+  border-color: var(--primary);
+  background: rgba(255, 30, 86, 0.14);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
     justify-content: center;
   }
 }
