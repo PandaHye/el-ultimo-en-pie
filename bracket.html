@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EL ÚLTIMO EN PIE — Liga, Mapas y Playoffs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-crest">☣</div>
+      <div class="brand-info">
+        <strong class="dyn-title">EL ÚLTIMO EN PIE</strong>
+        <span class="dyn-subtitle">L4D2 1V1 INVITATIONAL</span>
+      </div>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html"><span>⌂</span><span>Inicio</span></a>
+      <a href="informacion.html"><span>◇</span><span>Formato</span></a>
+      <a href="participantes.html"><span>♕</span><span class="dyn-nav-slots">Cupos (8)</span></a>
+      <a href="bracket.html" class="active"><span>⚔</span><span>Liga & Playoffs</span></a>
+      <a href="admin.html" class="admin-only"><span>♟</span><span>Admin</span></a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="btn-admin-toggle" id="adminToggleBtn">🔒 Admin</button>
+      <a href="registro.html" class="btn-esports">Ocupar un Cupo ↗</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="section-header">
+    <span class="eyebrow-tag">● CENTRO DE COMPETICIÓN ●</span>
+    <h1>Mapas por Jornada, Tabla & Playoffs</h1>
+    <p id="bracketSubtitle">Cada jornada se disputa en una campaña oficial de Left 4 Dead 2. Los Playoffs se revelan al concluir todas las jornadas.</p>
+  </div>
+
+  <!-- INTERRUPTORES EXCLUSIVOS DEL ADMIN -->
+  <div class="slots-banner admin-only" style="border-color: var(--border-neon); background: rgba(255, 30, 86, 0.08);">
+    <div>
+      <strong id="adminVisibilityStatus" style="font-size:18px; color:#fff;">
+        Estado Jornadas: 🔒 Oculto
+      </strong>
+      <p style="font-size:14px; color:var(--text-muted);">
+        Controla cuándo hacer visible el Rol de Juegos y cuándo desbloquear la fase de Playoffs.
+      </p>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <button type="button" class="btn-esports" id="toggleStageVisibilityBtn">
+        👁️ Mostrar Jornadas
+      </button>
+      <button type="button" class="btn-secondary" id="togglePlayoffsVisibilityBtn">
+        🏆 Mostrar Playoffs
+      </button>
+    </div>
+  </div>
+
+  <!-- PANTALLA DE ESPERA CUANDO EL ADMIN TIENE LAS JORNADAS OCULTAS -->
+  <section class="locked-stage" id="lockedBracketView" style="display:none;">
+    <div style="font-size:44px;">⏳</div>
+    <h2>Las Jornadas aún no han sido publicadas</h2>
+    <p style="color:var(--text-muted); max-width:480px; margin:0 auto;">
+      El administrador está preparando el calendario oficial de enfrentamientos y horarios por mapa.
+    </p>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="lockedProgressFill"></div>
+    </div>
+    <p><strong id="lockedCountText" style="color:var(--primary); font-size:18px;">0 / 8 Cupos Ocupados</strong></p>
+
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:20px;">
+      <a href="registro.html" class="btn-esports">+ Ocupar un Cupo</a>
+      <a href="participantes.html" class="btn-secondary" id="lockedViewSlotsBtn">Ver los Cupos</a>
+    </div>
+  </section>
+
+  <!-- CONTENIDO DE JORNADAS Y TABLA -->
+  <div id="unlockedBracketContent" style="display:none;">
+    <!-- CALENDARIO DE ENFRENTAMIENTOS -->
+    <section class="stage-box">
+      <div class="stage-head">
+        <div>
+          <span class="card-number" id="scheduleTotalDuelsTag">ROL DE JUEGOS · 1 MAPA OFICIAL POR JORNADA</span>
+          <h2 id="scheduleMainTitle">Calendario Todos contra Todos (7 Jornadas)</h2>
+        </div>
+        <span class="admin-only" style="font-size:13px; color:#6ee7b7;">
+          Admin: Haz clic sobre un duelo o jugador para anotar cómo quedó el marcador
+        </span>
+      </div>
+
+      <div class="schedule-controls">
+        <div class="round-tabs" id="roundTabs"></div>
+
+        <select id="playerScheduleFilter" class="input-esports" style="max-width: 270px; padding: 9px 14px;">
+          <option value="all">Ver todos los duelos de la jornada</option>
+        </select>
+      </div>
+
+      <!-- BANNER DEL MAPA DE LA JORNADA ACTUAL -->
+      <div class="map-showcase-banner" id="currentMapBanner">
+        <div>
+          <span id="bannerRoundLabel">JORNADA 1 · MAPA OFICIAL</span>
+          <h3 id="bannerMapTitle">🏙️ DEAD CENTER (PUNTO MUERTO)</h3>
+        </div>
+        <span id="bannerCompletedCounter">0 / 4 Duelos Jugados</span>
+      </div>
+
+      <div class="matches-grid smooth-fade" id="matchesContainer"></div>
+    </section>
+
+    <!-- FASE 1: TABLA TODOS CONTRA TODOS -->
+    <section class="stage-box">
+      <div class="stage-head">
+        <div>
+          <span class="card-number">FASE 1 · CLASIFICACIÓN EN VIVO</span>
+          <h2 id="standingsMainTitle">Tabla General (Top 4 Clasifican a Playoffs)</h2>
+        </div>
+        <button class="btn-secondary admin-only" id="resetScoresBtn" style="font-size:12px; padding:8px 14px;">
+          Reiniciar Torneo ↺
+        </button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="standings-table">
+          <thead>
+            <tr>
+              <th>Pos</th>
+              <th>Jugador (Nick / Steam)</th>
+              <th>PJ</th>
+              <th>V</th>
+              <th>D</th>
+              <th>Favor</th>
+              <th>Contra</th>
+              <th>DIF</th>
+              <th>Puntos</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="standingsBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CARTEL QUE SE MUESTRA MIENTRAS NO HAYAN TERMINADO LAS JORNADAS -->
+    <section class="locked-stage" id="lockedPlayoffsView" style="display:none; margin-top:10px;">
+      <div style="font-size:38px;">🔒</div>
+      <h2 id="lockedPlayoffsTitle">Playoffs Bloqueados hasta finalizar las Jornadas</h2>
+      <p id="lockedPlayoffsDesc" style="color:var(--text-muted); max-width:500px; margin:0 auto;">
+        Las llaves eliminatorias y la Gran Final se habilitarán cuando concluyan todos los enfrentamientos de la Fase Regular.
+      </p>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="playoffsProgressFill"></div>
+      </div>
+      <p><strong id="playoffsProgressText" style="color:var(--accent); font-size:16px;">0 / 28 Partidas Jugadas</strong></p>
+    </section>
+
+   <!-- FASE 2: ELIMINACIÓN DIRECTA -->
+<section class="stage-box smooth-fade" id="unlockedPlayoffsBox" style="display:none;">
+  <div class="stage-head">
+    <div>
+      <span class="card-number">FASE 2 · ELIMINACIÓN DIRECTA</span>
+      <h2 id="playoffsMainHeading">Playoffs</h2>
+      <p id="playoffsStageSub" style="font-size:12.5px; color:var(--text-muted); margin-top:4px;"></p>
+    </div>
+    <span class="admin-only" style="font-size:13px; color:#6ee7b7;">
+      Admin: Haz clic sobre el ganador de cada llave para avanzarlo o coronarlo
+    </span>
+  </div>
+
+  <!-- Aquí se dibuja el bracket dinámico -->
+  <div id="dynamicPlayoffsContainer" class="dynamic-playoffs-columns"></div>
+
+  <!-- Banner de campeón (fuera del contenedor) -->
+  <div id="championBanner" style="margin-top:18px; text-align:center; padding:14px;
+       border-radius:12px; background:rgba(245,158,11,0.12);
+       border:1px solid rgba(245,158,11,0.4); color:#fde68a; font-weight:700; display:none;">
+    🏆 CAMPEÓN DEFINITIVO:
+    <div id="championIdentity" style="margin-top:8px; display:flex; justify-content:center;"></div>
+  </div>
+</section>
+  </div>
+</main>
+
+<footer>
+  ● <span class="dyn-title">EL ÚLTIMO EN PIE</span> — Left 4 Dead 2 Esports Tournament ●
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

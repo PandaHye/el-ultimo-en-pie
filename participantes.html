@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EL ÚLTIMO EN PIE — Cupos del Torneo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-crest">☣</div>
+      <div class="brand-info">
+        <strong class="dyn-title">EL ÚLTIMO EN PIE</strong>
+        <span class="dyn-subtitle">L4D2 1V1 INVITATIONAL</span>
+      </div>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html"><span>⌂</span><span>Inicio</span></a>
+      <a href="informacion.html"><span>◇</span><span>Formato</span></a>
+      <a href="participantes.html" class="active"><span>♕</span><span class="dyn-nav-slots">Cupos (8)</span></a>
+      <a href="bracket.html"><span>⚔</span><span>Liga & Playoffs</span></a>
+      <a href="admin.html" class="admin-only"><span>♟</span><span>Admin</span></a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="btn-admin-toggle" id="adminToggleBtn">🔒 Admin</button>
+      <a href="registro.html" class="btn-esports">Ocupar un Cupo ↗</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="section-header">
+    <span class="eyebrow-tag">● ROSTER DEL TORNEO ●</span>
+    <h1 id="participantsPageTitle">Estado de los 8 Cupos</h1>
+    <p>Cada jugador muestra su Nickname principal, su foto de perfil y el nombre que tiene en Steam.</p>
+  </div>
+
+  <div class="slots-banner">
+    <div>
+      <strong id="slotCounter" style="font-size:18px;">0 / 8 Cupos Ocupados</strong>
+      <p style="font-size:14px; color:var(--text-muted);">Haz clic en el botón de Steam para ver el perfil oficial de cada competidor.</p>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <button class="btn-secondary admin-only" id="clearSlotsBtn" style="font-size:12px; padding:8px 14px;">
+        Vaciar Todos los Cupos ↺
+      </button>
+      <a href="registro.html" class="btn-esports">+ Ocupar un Cupo</a>
+    </div>
+  </div>
+
+  <div class="grid-cards" id="playersList"></div>
+</main>
+
+<footer>
+  ● <span class="dyn-title">EL ÚLTIMO EN PIE</span> — Left 4 Dead 2 Esports Tournament ●
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

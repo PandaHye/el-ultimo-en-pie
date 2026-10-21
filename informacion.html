@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EL ÚLTIMO EN PIE — Reglamento Oficial</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-crest">☣</div>
+      <div class="brand-info">
+        <strong class="dyn-title">EL ÚLTIMO EN PIE</strong>
+        <span class="dyn-subtitle">L4D2 1V1 INVITATIONAL</span>
+      </div>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html"><span>⌂</span><span>Inicio</span></a>
+      <a href="informacion.html" class="active"><span>◇</span><span>Reglamento</span></a>
+      <a href="participantes.html"><span>♕</span><span class="dyn-nav-slots">Cupos (8)</span></a>
+      <a href="bracket.html"><span>⚔</span><span>Liga & Playoffs</span></a>
+      <a href="admin.html" class="admin-only"><span>♟</span><span>Admin</span></a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="btn-admin-toggle" id="adminToggleBtn">🔒 Admin</button>
+      <a href="registro.html" class="btn-esports">Ocupar un Cupo ↗</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="section-header">
+    <span class="eyebrow-tag">● NORMATIVA COMPETITIVA OFICIAL ●</span>
+    <h1>Reglamento Oficial — <span class="dyn-title">EL ÚLTIMO EN PIE</span></h1>
+    <p id="infoSubtitle">
+      Competición individual de Left 4 Dead 2 con reglas competitivas ZoneMod 1v1. Aquí encontrarás qué armas, objetos e infectados estarán permitidos.
+    </p>
+  </div>
+
+  <!-- FICHA TÉCNICA RÁPIDA (SECCIÓN 1) -->
+  <div class="rulebook-meta-bar">
+    <div class="meta-tile">
+      <span>Juego & Modalidad</span>
+      <strong>Left 4 Dead 2 · Versus 1v1</strong>
+    </div>
+    <div class="meta-tile">
+      <span>Configuración Activa</span>
+      <strong style="color:var(--primary);">ZoneMod 1v1</strong>
+    </div>
+    <div class="meta-tile">
+      <span>Formato & Ritmo</span>
+      <strong id="metaScheduleText">7 Jornadas (1 por Semana)</strong>
+    </div>
+    <div class="meta-tile">
+      <span>Participantes & Corte</span>
+      <strong id="metaPlayersAndCut" style="color:var(--success);">8 Jugadores → Pasan 4</strong>
+    </div>
+  </div>
+
+  <div class="rulebook-grid">
+    <!-- 1. MODALIDAD Y FORMATO SEMANAL -->
+    <section class="rule-section-card">
+      <span class="card-number">SECCIÓN 01 · MODALIDAD DE JUEGO</span>
+      <h2>Formato Todos contra Todos & Playoffs</h2>
+      <p class="rule-lead" id="infoStep1Desc">
+        Cada participante competirá individualmente (1 vs 1) contra todos los demás jugadores inscritos. Cada jornada corresponde a <strong>1 semana</strong> de competición (Jornada 1 = Semana 1).
+      </p>
+      <ul class="esports-list">
+        <li>
+          <b class="num">1.1</b>
+          <span><strong>Configuración Competitiva:</strong> Todas las partidas se disputan en modo Versus 1 vs 1 bajo <span class="code-badge">ZoneMod 1v1</span>.</span>
+        </li>
+        <li>
+          <b class="num">1.2</b>
+          <span id="infoStep2Desc"><strong>Clasificación del 50%:</strong> Al concluir todas las semanas de la liga regular, clasifica exactamente la <strong>mitad superior de la tabla</strong> a los Playoffs eliminatorios.</span>
+        </li>
+        <li>
+          <b class="num">1.3</b>
+          <span><strong>Calendario Previo:</strong> La organización anunciará el calendario, los horarios y el mapa oficial de cada jornada semanal antes del inicio.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 2. REGLAS GENERALES -->
+    <section class="rule-section-card">
+      <span class="card-number">SECCIÓN 02 · NORMAS DE COMPETICIÓN</span>
+      <h2>Reglas Generales</h2>
+      <ul class="esports-list">
+        <li><b class="num">01</b><span>Todos los participantes deberán respetar el reglamento y las condiciones establecidas para el torneo.</span></li>
+        <li><b class="num">02</b><span><strong>Respeto y Deportividad:</strong> Se exige trato respetuoso hacia rivales y organizadores. No se permitirán insultos, acoso, amenazas ni sabotaje a la competición.</span></li>
+        <li><b class="num">03</b><span><strong>Juego Limpio:</strong> Prohibido utilizar hacks, cheats, exploits intencionados, programas externos o cualquier herramienta que dé ventaja injusta.</span></li>
+        <li><b class="num">04</b><span><strong>Preparación Previa:</strong> Cada jugador es responsable de verificar que su Left 4 Dead 2 funcione correctamente antes de la hora de su duelo.</span></li>
+        <li><b class="num">05</b><span><strong>Puntualidad:</strong> Ambos competidores deben presentarse a la hora acordada de su semana. Ausencias o retrasos serán evaluados por la organización.</span></li>
+        <li><b class="num">06</b><span><strong>Cero Exploits:</strong> No se permite aprovechar errores del mapa, del servidor o de ZoneMod para obtener ventajas indebidas.</span></li>
+        <li><b class="num">07</b><span><strong>Reclamos y Decisiones:</strong> Cualquier reclamo de resultado o reporte de infracción deberá realizarse con respeto y adjuntando pruebas (capturas o demos). Las decisiones de la organización son definitivas.</span></li>
+      </ul>
+    </section>
+
+    <!-- 3. INTEGRIDAD DE LOS ARCHIVOS -->
+    <section class="rule-section-card">
+      <span class="card-number">SECCIÓN 03 · ANTI-CHEAT Y ARCHIVOS</span>
+      <h2>Integridad de los Archivos del Juego</h2>
+      <p class="rule-lead">
+        Todos los participantes deben competir con una instalación legítima de Left 4 Dead 2 con sus archivos originales intactos.
+      </p>
+      <ul class="esports-list">
+        <li>
+          <b class="num">FILE</b>
+          <span><strong>GameInfo Original:</strong> El archivo <span class="code-badge">gameinfo.txt</span> deberá mantenerse en su estado original, sin ediciones manuales ni cargas personalizadas.</span>
+        </li>
+        <li>
+          <b class="num">MODS</b>
+          <span><strong>Archivos del Juego:</strong> Queda estrictamente prohibido modificar, reemplazar o alterar archivos internos para cambiar el comportamiento del juego o ganar visibilidad ilegal.</span>
+        </li>
+        <li>
+          <b class="num">CFG</b>
+          <span><strong>Scripts y Configuraciones:</strong> No se permite el uso de scripts automatizados (ej. BHop asistido), configs o addons que alteren las condiciones acordadas.</span>
+        </li>
+        <li>
+          <b class="num">EXE</b>
+          <span><strong>Programas Externos:</strong> Prohibido cualquier software externo que manipule la partida o proporcione información no permitida.</span>
+        </li>
+        <li>
+          <b class="num">VER</b>
+          <span><strong>Verificación:</strong> Ante indicios razonables de modificaciones prohibidas, la organización podrá solicitar pruebas o verificación respetando la privacidad del jugador. Si tienes dudas sobre un addon o config, consúltalo antes de jugar.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 4. CONFIGURACIÓN DEL SERVIDOR Y 5. SISTEMA DE ENFRENTAMIENTOS -->
+    <section class="rule-section-card">
+      <span class="card-number">SECCIÓN 04 & 05 · ZONEMOD 1V1</span>
+      <h2>¿Qué cambia en ZoneMod 1v1?</h2>
+      <p class="rule-lead">Jugaremos con una configuración competitiva para que ambos participantes tengan las mismas condiciones. No es el Versus normal: las armas, la curación y los infectados estarán limitados.</p>
+      <ul class="esports-list">
+        <li><b class="num">1V1</b><span><strong>Un jugador contra otro:</strong> cada partida será un enfrentamiento individual. Ambos deberán usar el servidor indicado por la organización.</span></li>
+        <li><b class="num">SI</b><span><strong>Infectados especiales:</strong> para este torneo se usarán Hunters y Jockeys. Cuando uno de estos infectados agarre al superviviente, le quitará <strong>25 puntos de vida al instante</strong> y desaparecerá, según la configuración definida para el torneo.</span></li>
+        <li><b class="num">T1</b><span><strong>Armas permitidas:</strong> solo habrá armas T1 (armas básicas), como subfusiles Uzi y escopetas Pump Shotgun o Chrome Shotgun, según las armas disponibles en el servidor. No se permitirán armas de nivel superior.</span></li>
+        <li><b class="num">PIL</b><span><strong>Curación:</strong> los supervivientes solo podrán usar píldoras. No habrá botiquines para curarse.</span></li>
+        <li><b class="num">OBJ</b><span><strong>Objetos y mejoras:</strong> los objetos adicionales y las mejoras estarán limitados por la configuración del servidor. No des por hecho que habrá molotovs, bombas, botes de bilis o munición especial.</span></li>
+        <li><b class="num">LOCK</b><span><strong>Configuración fija:</strong> no se podrán cambiar las reglas ni los parámetros del servidor durante la partida. Si tienes dudas sobre un arma, objeto o mecánica, consulta a la organización antes de jugar.</span></li>
+        <li><b class="num">SEM</b><span id="infoWeeklyRuleText"><strong>Jornadas:</strong> cada enfrentamiento se jugará en la semana y el mapa anunciados en el calendario oficial.</span></li>
+        <li><b class="num">PTS</b><span id="infoPointsRuleText"><strong>Puntuación:</strong> las victorias, los marcadores y los criterios de desempate se registrarán según el sistema anunciado por la organización antes del torneo.</span></li>
+      </ul>
+    </section>
+
+    <!-- 6. DESCONEXIONES Y PROBLEMAS TÉCNICOS -->
+    <section class="rule-section-card">
+      <span class="card-number">SECCIÓN 06 · SOPORTE Y CONTINGENCIAS</span>
+      <h2>Desconexiones y Problemas Técnicos</h2>
+      <ul class="esports-list">
+        <li><b class="num">01</b><span>Si un jugador sufre una caída de conexión o cierre inesperado del juego, deberá notificarlo a la organización de inmediato.</span></li>
+        <li><b class="num">02</b><span>La organización evaluará el momento exacto del incidente, el marcador en curso y las pruebas disponibles.</span></li>
+        <li><b class="num">03</b><span>Según las circunstancias, se podrá autorizar la reanudación de la partida, su repetición o la medida administrativa correspondiente.</span></li>
+        <li><b class="num">04</b><span><strong>Desconexión Intencional (Ragequit):</strong> Queda prohibido desconectarse deliberadamente para evitar una derrota o alterar un marcador.</span></li>
+        <li><b class="num">05</b><span>Ningún jugador debe asumir por cuenta propia que un duelo se repetirá o dará por terminado sin confirmación oficial del administrador.</span></li>
+      </ul>
+    </section>
+
+    <!-- 7. CONDUCTA ANTIDEPORTIVA Y 8. DISPOSICIONES FINALES -->
+    <section class="rule-section-card">
+      <span class="card-number">SECCIÓN 07 & 08 · SANCIONES Y CIERRE</span>
+      <h2>Infracciones y Disposiciones Finales</h2>
+      <p class="rule-lead">
+        Las infracciones serán evaluadas según su gravedad, las pruebas aportadas y si existe reincidencia. El buen nivel de juego o el uso de estrategias legítimas de ZoneMod nunca serán considerados infracción.
+      </p>
+
+      <div class="sanctions-row">
+        <div class="sanction-pill">
+          <strong>1. Advertencia</strong>
+          <span>Aviso formal en faltas leves.</span>
+        </div>
+        <div class="sanction-pill">
+          <strong>2. Repetición</strong>
+          <span>Reinicio del duelo cuando corresponda.</span>
+        </div>
+        <div class="sanction-pill">
+          <strong>3. Derrota Admin</strong>
+          <span>Pérdida del encuentro por falta grave.</span>
+        </div>
+        <div class="sanction-pill">
+          <strong>4. Descalificación</strong>
+          <span>Expulsión en casos de cheats o reincidencia.</span>
+        </div>
+      </div>
+
+      <ul class="esports-list" style="margin-top:6px;">
+        <li>
+          <b class="num">FINAL</b>
+          <span><strong>Aceptación del Reglamento:</strong> Ocupar un cupo en <strong class="dyn-title">EL ÚLTIMO EN PIE</strong> implica el compromiso total con estas normas. Cualquier situación imprevista será resuelta por la organización buscando siempre la igualdad competitiva.</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>
+  ● <span class="dyn-title">EL ÚLTIMO EN PIE</span> — Left 4 Dead 2 Esports Tournament ●
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

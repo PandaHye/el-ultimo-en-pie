@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EL ÚLTIMO EN PIE — Ocupar un Cupo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-crest">☣</div>
+      <div class="brand-info">
+      <strong class="dyn-title">EL ÚLTIMO EN PIE</strong>
+      <span class="dyn-subtitle">L4D2 1V1 INVITATIONAL</span>
+      </div>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html"><span>⌂</span><span>Inicio</span></a>
+      <a href="informacion.html"><span>◇</span><span>Formato</span></a>
+      <a href="participantes.html"><span>♕</span><span class="dyn-nav-slots">Cupos (8)</span></a>
+      <a href="bracket.html"><span>⚔</span><span>Liga & Playoffs</span></a>
+      <a href="admin.html" class="admin-only"><span>♟</span><span>Admin</span></a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="btn-admin-toggle" id="adminToggleBtn">🔒 Admin</button>
+      <a href="registro.html" class="btn-esports">Ocupar un Cupo ↗</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="section-header">
+    <span class="eyebrow-tag">● VINCULACIÓN CON STEAM ●</span>
+    <h1>Reclamar Cupo en el Torneo</h1>
+    <p>Pega el link de tu perfil de Steam y escribe tu apodo para quedar vinculado al instante.</p>
+  </div>
+
+  <form class="esports-card form-box" id="registerForm">
+    <div class="field-group">
+      <label for="steamUrl">Link de tu Perfil de Steam</label>
+      <input
+        type="url"
+        id="steamUrl"
+        class="input-esports"
+        placeholder="https://steamcommunity.com/profiles/7656119... o /id/..."
+        required
+      >
+      <small>
+        Obtendremos automáticamente tu <strong>Foto de Perfil</strong> y el <strong>Nombre que tienes puesto en Steam</strong>.
+      </small>
+    </div>
+
+    <div class="field-group">
+      <label for="nickname">Tu Nickname en el Torneo (Opcional si quieres usar el mismo de Steam)</label>
+      <input
+        type="text"
+        id="nickname"
+        class="input-esports"
+        placeholder="Ej: HunterKing (Si lo dejas vacío se usará tu nombre de Steam)"
+      >
+    </div>
+
+    <button type="submit" id="submitBtn" class="btn-esports" style="width:100%; padding:14px; font-size:15px;">
+      Vincular con Steam en 1 Clic ↗
+    </button>
+  </form>
+</main>
+
+<footer>
+   <span class="dyn-title">EL ÚLTIMO EN PIE</span> — Left 4 Dead 2 Esports Tournament ●
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

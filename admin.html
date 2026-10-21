@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EL ÚLTIMO EN PIE — Panel de Administración</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-crest">☣</div>
+      <div class="brand-info">
+        <strong class="dyn-title">EL ÚLTIMO EN PIE</strong>
+        <span class="dyn-subtitle">L4D2 1V1 INVITATIONAL</span>
+      </div>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html"><span>⌂</span><span>Inicio</span></a>
+      <a href="informacion.html"><span>◇</span><span>Formato</span></a>
+      <a href="participantes.html"><span>♕</span><span class="dyn-nav-slots">Cupos (8)</span></a>
+      <a href="bracket.html"><span>⚔</span><span>Liga & Playoffs</span></a>
+      <a href="admin.html" class="active admin-only"><span>♟</span><span>Admin</span></a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="btn-admin-toggle" id="adminToggleBtn">🔒 Admin</button>
+      <a href="registro.html" class="btn-esports">Ocupar un Cupo ↗</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- SI NO HA INICIADO SESIÓN COMO ADMIN -->
+  <section class="locked-stage" id="adminLockedScreen" style="display:none;">
+    <div style="font-size:44px;">🔐</div>
+    <h2>Acceso Restringido — Solo Administrador</h2>
+    <p style="color:var(--text-muted); max-width:460px; margin:0 auto 20px;">
+      Inicia sesión con tu clave de Administrador para desbloquear la configuración global del torneo, cupos y mapas.
+    </p>
+    <button type="button" class="btn-esports" onclick="document.getElementById('adminToggleBtn').click()">
+      🔑 Ingresar Clave de Admin
+    </button>
+  </section>
+
+  <!-- PANEL COMPLETO DE ADMINISTRACIÓN -->
+  <div id="adminDashboardContent" style="display:none;">
+    <div class="section-header">
+      <span class="eyebrow-tag">● CENTRO DE MANDO GLOBAL ●</span>
+      <h1>Panel de Configuración del Torneo</h1>
+      <p>Cambia la cantidad de jugadores, los mapas de cada jornada y los textos de toda la página en tiempo real.</p>
+    </div>
+
+    <div class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); align-items: start;">
+      
+      <!-- BLOQUE 1: CANTIDAD DE JUGADORES Y REGLAS -->
+      <section class="esports-card">
+        <span class="card-number">01 · CAPACIDAD Y FORMATO</span>
+        <h3>Cantidad de Jugadores y Puntos</h3>
+        <p style="margin-bottom:18px;">
+          Si entran más amigos, solo sube el número aquí. Los cupos ya registrados se conservan y el calendario Todos contra Todos se adapta solo.
+        </p>
+
+        <div class="field-group">
+          <label for="cfgMaxPlayers">Total de Cupos (Jugadores en el Torneo)</label>
+          <input type="number" id="cfgMaxPlayers" class="input-esports" min="4" max="32" step="1" value="8">
+          <small>Ejemplo: 8, 10, 12, 16 jugadores. Ajusta automáticamente todas las pantallas.</small>
+        </div>
+
+        <div class="field-group">
+          <label for="cfgPointsPerWin">Puntos por cada Victoria en Liga</label>
+          <input type="number" id="cfgPointsPerWin" class="input-esports" min="1" max="10" value="3">
+        </div>
+
+      <div class="field-group">
+          <label>Clasificados a Playoffs (Automático: 50% de los Cupos)</label>
+          <div id="cfgPlayoffSpotsPreview" class="input-esports" style="color:var(--success); font-weight:700;">
+            Pasan los 4 mejores (el 50% de 8 cupos)
+          </div>
+        </div>
+
+        <div class="field-group" style="display:flex; gap:10px; flex-wrap:wrap; padding-top:8px;">
+          <button type="button" class="btn-esports" id="saveCapacityBtn" style="flex:1;">
+            💾 Guardar Cupos y Recalcular Liga
+          </button>
+        </div>
+      </section>
+
+      <!-- BLOQUE 2: TEXTOS E IDENTIDAD DE LA PÁGINA -->
+      <section class="esports-card">
+        <span class="card-number">02 · PERSONALIZACIÓN DE LA WEB</span>
+        <h3>Textos y Visibilidad</h3>
+        <p style="margin-bottom:18px;">
+          Edita los títulos principales que aparecen en la barra superior y en la portada de Inicio.
+        </p>
+
+        <div class="field-group">
+          <label for="cfgTitle">Nombre del Torneo</label>
+          <input type="text" id="cfgTitle" class="input-esports" placeholder="EL ÚLTIMO EN PIE">
+        </div>
+
+        <div class="field-group">
+          <label for="cfgSubtitle">Subtítulo del Header</label>
+          <input type="text" id="cfgSubtitle" class="input-esports" placeholder="L4D2 1V1 INVITATIONAL">
+        </div>
+
+        <div class="field-group">
+          <label for="cfgHeroTag">Etiqueta Superior de Inicio</label>
+          <input type="text" id="cfgHeroTag" class="input-esports" placeholder="● TORNEO CERRADO ENTRE AMIGOS ●">
+        </div>
+
+        <div class="field-group">
+          <label for="cfgHeroDesc">Descripción de Portada</label>
+          <input type="text" id="cfgHeroDesc" class="input-esports">
+        </div>
+
+        <button type="button" class="btn-esports" id="saveTextsBtn" style="width:100%;">
+          💾 Guardar Textos de la Página
+        </button>
+      </section>
+
+    </div>
+
+    <!-- BLOQUE 3: CONFIGURADOR DE MAPAS POR JORNADA -->
+    <section class="stage-box" style="margin-top:24px;">
+      <div class="stage-head">
+        <div>
+          <span class="card-number">03 · CAMPAÑAS DE LEFT 4 DEAD 2</span>
+          <h2>Asignar Mapa por cada Jornada</h2>
+        </div>
+        <button type="button" class="btn-esports" id="saveMapsBtn">
+          💾 Guardar Mapas de las Jornadas
+        </button>
+      </div>
+      <p style="color:var(--text-muted); font-size:15px; margin-bottom:20px;">
+        El número de jornadas se ajusta automáticamente según la cantidad de jugadores que hayas elegido arriba.
+      </p>
+
+      <div class="grid-cards" id="adminMapsGrid"></div>
+    </section>
+
+    <!-- BLOQUE 4: GESTIÓN RÁPIDA DE JUGADORES Y ESTADO -->
+    <section class="stage-box">
+      <div class="stage-head">
+        <div>
+          <span class="card-number">04 · ACCIONES RÁPIDAS DE TORNEO</span>
+          <h2>Visibilidad y Reinicio</h2>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <button type="button" class="btn-secondary" id="adminQuickToggleStage">
+          👁️ Mostrar / Ocultar Jornadas al Público
+        </button>
+        <button type="button" class="btn-secondary" id="adminQuickTogglePlayoffs">
+          🏆 Mostrar / Ocultar Playoffs
+        </button>
+        <button type="button" class="btn-secondary" id="adminResetMatchesOnly" style="border-color:#f59e0b; color:#fde68a;">
+          ↺ Reiniciar Marcadores de Jornadas
+        </button>
+        <button type="button" class="btn-secondary" id="adminResetAllSlots" style="border-color:#f43f5e; color:#fda4af;">
+          🗑️ Vaciar Todos los Cupos
+        </button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  ● <span class="dyn-title">EL ÚLTIMO EN PIE</span> — Left 4 Dead 2 Esports Tournament ●
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
